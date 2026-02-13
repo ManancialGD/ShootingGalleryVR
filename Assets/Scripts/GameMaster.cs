@@ -25,7 +25,7 @@ public class GameMaster : Singleton<GameMaster>
     public Target easyTarget;
     public Target mediumTarget;
     public Target hardTarget;
-    public Target targetPrefab;
+    public Target target;
     public Transform[] targetSpawns;
     public AudioClip targetHitSound;
 
@@ -38,8 +38,6 @@ public class GameMaster : Singleton<GameMaster>
     float elapsed = 0f;
     private float spawnInterval = 2f;
     private float targetLifetime = 4f;
-
-    private Target currentTarget;
 
     private void Start()
     {
@@ -85,9 +83,7 @@ public class GameMaster : Singleton<GameMaster>
                 audioSource.PlayOneShot(targetHitSound);
                 points += 10;
                 scoreText.text = $"Score: {points}";
-                Destroy(target.gameObject);
-                if (target == currentTarget)
-                    currentTarget = null;
+                target.gameObject.SetActive(false);
                 break;
 
             case GameStates.Finished:
@@ -110,17 +106,16 @@ public class GameMaster : Singleton<GameMaster>
             SpawnTarget();
 
             float lifetimeTimer = 0f;
-            while (lifetimeTimer < targetLifetime && currentState == GameStates.Playing && currentTarget != null)
+            while (lifetimeTimer < targetLifetime && currentState == GameStates.Playing && target != null)
             {
                 yield return null;
                 lifetimeTimer += Time.deltaTime;
                 elapsed += Time.deltaTime;
             }
 
-            if (currentTarget != null && currentState == GameStates.Playing)
+            if (target != null && currentState == GameStates.Playing)
             {
-                Destroy(currentTarget.gameObject);
-                currentTarget = null;
+                target.gameObject.SetActive(false);
             }
 
             float intervalTimer = 0f;
@@ -141,7 +136,8 @@ public class GameMaster : Singleton<GameMaster>
         if (targetSpawns.Length == 0) return;
 
         Transform spawn = targetSpawns[Random.Range(0, targetSpawns.Length)];
-        currentTarget = Instantiate(targetPrefab, spawn.position, spawn.rotation);
+        target.transform.position = spawn.position;
+        target.gameObject.SetActive(true);
     }
 
     private void ActivateStartTarget()
@@ -166,10 +162,9 @@ public class GameMaster : Singleton<GameMaster>
 
         yield return new WaitForSeconds(2f);
 
-        if (currentTarget != null)
+        if (target != null)
         {
-            Destroy(currentTarget.gameObject);
-            currentTarget = null;
+            target.gameObject.SetActive(false);
         }
 
         points = 0f;
@@ -182,7 +177,7 @@ public class GameMaster : Singleton<GameMaster>
     {
         if (gameLoopCoroutine != null)
             StopCoroutine(gameLoopCoroutine);
-        currentTarget = null;
+        target.gameObject.SetActive(false);
         StartCoroutine(FinishGame());
     }
 }
