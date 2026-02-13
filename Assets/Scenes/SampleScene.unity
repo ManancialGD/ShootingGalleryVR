@@ -960,8 +960,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.XRInteractionManager
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
-  <logInteractionPreventedWarnings>k__BackingField: 1
-  m_NeedsInteractableSort: 0
 --- !u!4 &200149689
 Transform:
   m_ObjectHideFlags: 0
@@ -1191,9 +1189,9 @@ MonoBehaviour:
   leftHand: {fileID: 692513852}
   AttachmentPoint: {fileID: 318109714}
   SecondaryAttachmentPoint: {fileID: 1150669736}
-  rightTriggerAction: {fileID: 0}
-  leftTriggerAction: {fileID: 0}
-  swapHandsAction: {fileID: 0}
+  rightTriggerAction: {fileID: 1528354693}
+  leftTriggerAction: {fileID: 1093087978}
+  swapHandsAction: {fileID: 1620480252}
   shootSound:
   - {fileID: 8300000, guid: a95a4a2859dc15e40954e73fb80ad253, type: 3}
   - {fileID: 8300000, guid: 1148585924c3cec49afe648f7df9fa88, type: 3}
@@ -5674,6 +5672,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3271910899072668962, guid: af43153991420fe4fac16a0543fd9e2d, type: 3}
   m_PrefabInstance: {fileID: 1086498353}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1093087978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI Left Interaction/Activate
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 0c0991c5-d329-4afc-8892-1076b440477c
 --- !u!1001 &1115669807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8947,6 +8959,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7087778213672153286, guid: 28e7215f7f3d4af479961532235129be, type: 3}
   m_PrefabInstance: {fileID: 1528260018}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1528354693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI Right Interaction/Activate
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 41976d89-60de-4deb-bff9-16b4af96b290
 --- !u!1001 &1535975695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9194,6 +9220,20 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 109434732388006827, guid: 65847589f926b734d9eaed6e25f0046b, type: 3}
   m_PrefabInstance: {fileID: 197948199}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1620480252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI Right Locomotion/Jump
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 01c7fda4-9c15-4167-8b87-58024f21d903
 --- !u!1 &1628988567
 GameObject:
   m_ObjectHideFlags: 0
